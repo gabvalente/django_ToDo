@@ -1,0 +1,70 @@
+{#{%extends 'tarefas/base.html' %}#}
+
+<!DOCTYPE html>
+
+<html lang="en">
+{%block 'title'%}Edit{%endblock%}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+
+<body>
+{%block 'content'%}
+
+ <div class="m-4">
+      <form action="{% url 'save_update' Tarefa.id%}" method="post">
+        {% csrf_token %}
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label>ID</label>
+              <label>
+                  <input name="id" type="text" value="{{Tarefa.id}}" class="form-control" placeholder="Id" readonly>
+              </label>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label>Description</label>
+              <label>
+                  <input name="description" type="text" value="{{Tarefa.description}}" class="form-control" placeholder="Description">
+              </label>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label>Owner</label>
+              <label>
+                  <input name="owner" type="text" value="{{Tarefa.owner}}" class="form-control" placeholder="Owner">
+              </label>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label>Due Date</label>
+              <label>
+                  <input name="duedate" type="date" value="{{Tarefa.duedate}}" class="form-control" placeholder="Quantity">
+              </label>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label>Is Done</label>
+              <label>
+                  <input name="isdone" type="text" value="{{Tarefa.isdone}}" class="form-control" placeholder="Done?">
+              </label>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-4">Edit</button>
+      </form>
+    </div>
+</body>
+
+</html>
+
+   {%endblock%}
